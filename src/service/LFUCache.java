@@ -5,10 +5,10 @@ import java.util.Map;
 
 public class LFUCache {
 
-    Node head;
-    Node tail;
-    Map<Long, Node> map = null;
-    int capacity = 0;
+    private Node head;
+    private Node tail;
+    private Map<Long, Node> map;
+    private int capacity;
 
     public LFUCache(int capacity) {
         this.capacity = capacity;
@@ -22,7 +22,6 @@ public class LFUCache {
         }
 
         Node item = map.get(key);
-        // move to right position according to frequency
         removeNode(item);
         item.frequency = item.frequency + 1;
         addNodeWithUpdatedFrequency(item);
@@ -36,17 +35,14 @@ public class LFUCache {
             Node item = map.get(key);
             item.news = news;
             item.frequency = item.frequency + 1;
-            // move to right position according to frequency
             removeNode(item);
             addNodeWithUpdatedFrequency(item);
         } else {
             if (map.size() >= capacity) {
-                // delete head with least frequency and least recently used
                 map.remove(head.key);
                 removeNode(head);
             }
 
-            // move to right position according to frequency
             Node node = new Node(key, news, 1);
             addNodeWithUpdatedFrequency(node);
             map.put(key, node);
@@ -83,7 +79,6 @@ public class LFUCache {
                         node.next = temp;
                         node.prev = temp.prev;
                         temp.prev.next = node;
-                        node.prev = temp.prev;
                         break;
                     }
                 } else {

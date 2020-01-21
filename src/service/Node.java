@@ -1,6 +1,6 @@
 package service;
 
-public class Node {
+class Node {
 
     long key;
     String news;
@@ -8,8 +8,8 @@ public class Node {
     Node prev;
     Node next;
 
-    public Node(long key, String news, int frequency){
-        this.key   = key;
+    Node(long key, String news, int frequency) {
+        this.key = key;
         this.news = news;
         this.frequency = frequency;
     }

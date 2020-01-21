@@ -2,10 +2,9 @@ package service;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class News {
-    Map<String, String> newsList = new HashMap<>();
+    private Map<String, String> newsList = new HashMap<>();
 
     public void putToNewsList() {
         newsList.put("News #1", "The popular tourist destinations Hawaii and Thailand now join the growing group of states that has decided to ban a range of single-use plastic.");
@@ -23,7 +22,6 @@ public class News {
     public String getNews(String key) {
         return newsList.get(key);
     }
-
 
     @Override
     public String toString() {
