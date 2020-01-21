@@ -12,8 +12,8 @@ public class AppExecutor {
 
         for (long i = 1L; i <= 10L; i++) {
             cache.put(i, news.getNews("News #" + i));
-            cache.put(2L, news.getNews("News #1"));
-            cache.put(3L, news.getNews("News #2"));
+            cache.put(2L, news.getNews("News #2"));
+            cache.put(3L, news.getNews("News #3"));
         }
 
         for (long i = 1L; i <= 10L; i++) {
