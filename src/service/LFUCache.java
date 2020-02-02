@@ -7,17 +7,21 @@ public class LFUCache {
 
     private Node head;
     private Node tail;
-    private Map<Long, Node> map;
+    private Map<Integer, Node> map;
     private int capacity;
 
     public LFUCache(int capacity) {
         this.capacity = capacity;
-        this.map = new HashMap<>();
+        this.map = new HashMap<Integer, Node>();
     }
 
-    public String get(long key) {
+    public boolean contains(int key) {
+        return map.containsKey(key);
+    }
 
-        if (map.get(key) == null) {
+    public String get(int key) {
+
+        if (!map.containsKey(key)) {
             return null;
         }
 
@@ -29,7 +33,7 @@ public class LFUCache {
         return item.news;
     }
 
-    public void put(Long key, String news) {
+    public void put(int key, String news) {
 
         if (map.containsKey(key)) {
             Node item = map.get(key);
